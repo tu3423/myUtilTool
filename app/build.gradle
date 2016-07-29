@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+apply plugin: 'bugly'
+bugly {
+    appId = '900022409'
+    appKey = 'f1XRkUj7nmGvoI10'
+}
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "com.example.ce_ztzheng.myutiltool"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 0
+
+        versionName "我不是最新的"
+//        ndk {
+//            //设置支持的SO库架构
+//            abiFilters 'armeabi-v7a' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+//        }
+        multiDexEnabled true
+
+    }
+//    sourceSets {
+//        main.jniLibs.srcDirs = ['libs']
+//   }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    // 后续更新SDK，请直接更新版本号
+    compile files('libs/VoiceRecognition-2.0.1.jar')
+    compile 'com.pgyersdk:sdk:2.2.2'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.tencent.bugly:crashreport:1.2.9'
+    compile 'com.android.support:support-v4:23.1.1'
+}
